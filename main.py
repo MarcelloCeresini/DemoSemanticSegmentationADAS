@@ -101,8 +101,39 @@ def main():
             total_loss += loss.item()
             pbar.set_postfix({"batch_loss": f"{loss.item():.4f}"})
             
+            if i > 30: # TODO: only for debug speedup, remove for real run
+                break
+            
         avg_loss = total_loss / len(train_loader)
         print(f"Epoch {epoch+1}: Average Loss = {avg_loss:.4f}")
+
+    # ----------------------
+    # Validation/Testing Loop
+    # ----------------------
+    model.eval()
+    val_loss = 0
+    correct_pixels = 0
+    total_pixels = 0
+    
+    with torch.no_grad():
+        for i, (imgs, masks) in enumerate(val_loader):
+            imgs, masks = imgs.to(device).float(), masks.to(device)
+            outputs = model(imgs)
+            loss = loss_fn(outputs, masks)
+            val_loss += loss.item()
+            
+            # Optional: compute pixel accuracy
+            preds = torch.argmax(outputs, dim=1)
+            correct_pixels += (preds == masks).sum().item()
+            total_pixels += torch.numel(masks)
+            
+            if i > 30: # TODO: only for debug speedup, remove for real run
+                break
+    
+    avg_val_loss = val_loss / len(val_loader)
+    pixel_accuracy = correct_pixels / total_pixels
+    
+    print(f"Validation: Average Loss = {avg_val_loss:.4f}, Pixel Accuracy = {pixel_accuracy:.3%}")
 
     # ----------------------
     # Inference on one image

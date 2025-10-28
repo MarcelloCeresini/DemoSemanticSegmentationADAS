@@ -5,7 +5,7 @@ This repo was created to share a simple baseline Semantic Segmentation demo show
 ## Setup
 - Move into a directory where you have your coding projects
 - Clone this repo with
-  git clone https://github.com/MarcelloCeresini/DemoSemanticSegmentationADAS/
+  git clone https://github.com/MarcelloCeresini/DemoSemanticSegmentationADAS.git
 - Move inside the DemoSemanticSegmentationADAS folder that has been created
 - Here, create a "data" directory
 - Moreover, create a python virtual environment with
@@ -30,4 +30,6 @@ This repo was created to share a simple baseline Semantic Segmentation demo show
           train/
           val/
           test/
+- Launch the main.py with "python main.py"
+- Modify parameters inside the file (ex. batch size, model, number of epochs, etc...) to see how it affects the results
   

@@ -9,9 +9,9 @@ This repo was created to share a simple baseline Semantic Segmentation demo show
 - Move inside the DemoSemanticSegmentationADAS folder that has been created
 - Here, create a "data" directory
 - Moreover, create a python virtual environment with
-    python -m venv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
+    python -m venv venv \n
+    source venv/bin/activate \n
+    pip install -r requirements.txt \n
 - If you want to install torch with CUDA, follow instructions at https://pytorch.org
 - To download the dataset, go at https://www.cityscapes-dataset.com/downloads/, and create an account with your university email
 - Download CityScapes dataset splits gtFine_trainvaltest and leftImg8bit_trainvaltest
